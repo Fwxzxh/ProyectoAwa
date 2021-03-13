@@ -25,11 +25,11 @@ excepto durante los periodos de recarga de los tanques.
 el tanque que tienen asignado y la cantidad de litros solicitados.
 
 ## TODO
-- [] Crear las clases Servidor/Cliente.
-- [] Implementar Logs en el Cliente y en el Servidor.
-- [] Ver si las 00:00 debe de ser con el reloj *irl* o implementar un reloj interno que vaya más rápido.
-- [] Implementar reabastecimiento a las 00:00 horas.
-- [] implementar manejo de clientes (que se va a hacer cuando un cliente se conecte?)
+- [ ] Crear las clases Servidor/Cliente.
+- [ ] Implementar Logs en el Cliente y en el Servidor.
+- [ ] Ver si las 00:00 debe de ser con el reloj *irl* o implementar un reloj interno que vaya más rápido.
+- [ ] Implementar reabastecimiento a las 00:00 horas.
+- [ ] implementar manejo de clientes (que se va a hacer cuando un cliente se conecte?)
 
 ## Detalles
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
