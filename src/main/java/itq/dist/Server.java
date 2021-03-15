@@ -1,4 +1,5 @@
-import com.tank.Tank;
+package itq.dist;
+import itq.dist.Tank;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
