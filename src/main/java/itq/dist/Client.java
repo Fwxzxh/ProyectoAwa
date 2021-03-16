@@ -1,4 +1,5 @@
 package itq.dist;
+import itq.dist.Request;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;

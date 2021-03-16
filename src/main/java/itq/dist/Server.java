@@ -1,5 +1,6 @@
 package itq.dist;
 import itq.dist.Tank;
+import itq.dist.Request;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

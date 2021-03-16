@@ -1,4 +1,4 @@
-package com.itq.pd;
+package itq.dist;
 
 import java.io.Serializable;
 import java.util.UUID;
