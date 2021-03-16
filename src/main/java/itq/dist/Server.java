@@ -54,11 +54,11 @@ public class Server {
                                 break;
                             case 2:
                                 tank2.dispatch(clientRequest.liters);
-                                message = getMessage(tank1,clientRequest);
+                                message = getMessage(tank2,clientRequest);
                                 break;
                             case 3:
                                 tank3.dispatch(clientRequest.liters);
-                                message = getMessage(tank1,clientRequest);
+                                message = getMessage(tank3,clientRequest);
                                 break;
                             default:
                                 message = "El número de tanque para despachar no coincide con alguno registrado";
