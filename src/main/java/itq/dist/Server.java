@@ -40,6 +40,8 @@ public class Server {
 					ObjectInputStream objectInputStream = new ObjectInputStream(inStream);
 					Request clientRequest = (Request) objectInputStream.readObject();
 
+                    logger.info("Petición de llenado de [" + clientRequest.liters + "] recibida del cliente [" + clientRequest.ID + "]");
+
                     OutputStream outStream = socket.getOutputStream();
                     DataOutputStream flowOut = new DataOutputStream(outStream);
 
@@ -58,7 +60,7 @@ public class Server {
                                 message = getMessage(tank1,clientRequest);
                                 break;
                             default:
-                                message = "The tank assigned for dispatch does not exist";
+                                message = "El número de tanque para despachar no coincide con alguno registrado";
                         }
                         flowOut.writeUTF(message);
 
@@ -82,6 +84,6 @@ public class Server {
     }
 
     private static String getMessage(Tank tank, Request request) {
-		return "Tank " + request.tank + " has dispatch " + request.liters + ", current tank state is of: " + tank.capacity + " liters \n ";
+		return "El Tanque " + request.tank + " ha despachado " + request.liters + "L , su contenido actual es de: " + tank.capacity + "L \n ";
 	}
 }
