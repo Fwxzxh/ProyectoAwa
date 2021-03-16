@@ -16,6 +16,7 @@ public class Server {
     public static void main(String[] args) {
         ServerSocket serverSocket;
         boolean alive = true;
+        String message;
       
         Tank tank1 = new Tank(10000, 10); // Tanque 1: 10000 litros de capacidad, 10 minutos tiempo de llenado
         Tank tank2 = new Tank(20000, 20); // Tanque 2: 20000 litros de capacidad, 20 minutos tiempo de llenado
@@ -36,22 +37,35 @@ public class Server {
                     }
 
                     InputStream inStream = socket.getInputStream();
-                    DataInputStream dataIn = new DataInputStream(inStream);
-                    int input = dataIn.readInt(); // Solicitud de n litros (Provicional)
-
-                    logger.debug("Datos recibidos: [" + input + "]");
+					ObjectInputStream objectInputStream = new ObjectInputStream(inStream);
+					Request clientRequest = (Request) objectInputStream.readObject();
 
                     OutputStream outStream = socket.getOutputStream();
                     DataOutputStream flowOut = new DataOutputStream(outStream);
-                  
-                  // Provicionalmente en el tanque 1 se despachan n litros
+
                     try {
-                        tank1.dispatch(input);
+                        switch(clientRequest.tank) {
+                            case 1:
+                                tank1.dispatch(clientRequest.liters);
+                                message = getMessage(tank1,clientRequest);
+                                break;
+                            case 2:
+                                tank2.dispatch(clientRequest.liters);
+                                message = getMessage(tank1,clientRequest);
+                                break;
+                            case 3:
+                                tank3.dispatch(clientRequest.liters);
+                                message = getMessage(tank1,clientRequest);
+                                break;
+                            default:
+                                message = "The tank assigned for dispatch does not exist";
+                        }
+                        flowOut.writeUTF(message);
+
                     } catch(Exception e) {
                         flowOut.writeUTF(e.getMessage());
                     }
-
-                    flowOut.writeUTF("Tank 1 capacity: " + tank1.capacity);
+											                
                 }
 
                 serverSocket.close();
