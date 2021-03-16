@@ -80,4 +80,8 @@ public class Server {
             logger.error(e.getMessage());
         }
     }
+
+    private static String getMessage(Tank tank, Request request) {
+		return "Tank " + request.tank + " has dispatch " + request.liters + ", current tank state is of: " + tank.capacity + " liters \n ";
+	}
 }
