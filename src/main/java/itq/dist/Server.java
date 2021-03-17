@@ -30,7 +30,6 @@ public class Server {
                 while(alive) {
                     Socket socket = serverSocket.accept();
                   
-                  // A las 00:00 hrs los tanques se llenan
                     if (java.time.LocalTime.now().toString() == "00:00:0.0") {
                         tank1.fill();
                         tank2.fill();
@@ -61,16 +60,14 @@ public class Server {
                                 message = getMessage(tank3,clientRequest);
                                 break;
                             default:
-                                message = "El número de tanque para despachar no coincide con alguno registrado";
+                                message = "El número de tanque para despachar no coincidio con los tanques registrados";
                         }
                         flowOut.writeUTF(message);
-
+                        logger.info(message)
                     } catch(Exception e) {
                         flowOut.writeUTF(e.getMessage());
-                    }
-											                
+                    }						                
                 }
-
                 serverSocket.close();
             } catch(Exception e) {
                 e.printStackTrace();
