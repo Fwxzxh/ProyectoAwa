@@ -13,7 +13,10 @@ import java.time.LocalTime;
 public class Server {
     private static final Logger logger = LogManager.getLogger(Server.class);
     private static final int PORT = 2000;
-
+/**
+ * 
+ * @param args
+ */
     public static void main(String[] args) {
         ServerSocket serverSocket;
         boolean alive = true;
@@ -40,9 +43,9 @@ public class Server {
                     InputStream inStream = socket.getInputStream();
 					ObjectInputStream objectInputStream = new ObjectInputStream(inStream);
 					Request clientRequest = (Request) objectInputStream.readObject();
-
-                    logger.info("Petición de llenado de [" + clientRequest.liters + "] recibida del cliente [" + clientRequest.ID + "]");
-
+					
+                    logger.info("Petición de llenado de [" + clientRequest.liters + "] recibida del cliente [" + clientRequest.ID + "]" + " a la hora: " + java.time.LocalTime.now().toString());
+                    
                     OutputStream outStream = socket.getOutputStream();
                     DataOutputStream flowOut = new DataOutputStream(outStream);
 
@@ -50,14 +53,17 @@ public class Server {
                         switch(clientRequest.tank) {
                             case 1:
                                 tank1.dispatch(clientRequest.liters);
+                                logger.info("El Tanque " + clientRequest.tank + " ha despachado " + clientRequest.liters + "L correctamente, su contenido actual es de: " + tank1.capacity + " L \n ");
                                 message = getMessage(tank1,clientRequest);
                                 break;
                             case 2:
                                 tank2.dispatch(clientRequest.liters);
+                                logger.info("El Tanque " + clientRequest.tank + " ha despachado " + clientRequest.liters + "L  correctamente, su contenido actual es de: " + tank2.capacity + " L \n ");
                                 message = getMessage(tank2,clientRequest);
                                 break;
                             case 3:
                                 tank3.dispatch(clientRequest.liters);
+                                logger.info("El Tanque " + clientRequest.tank + " ha despachado " + clientRequest.liters + "L  correctamente, su contenido actual es de: " + tank3.capacity + " L \n ");
                                 message = getMessage(tank3,clientRequest);
                                 break;
                             default:
@@ -83,8 +89,13 @@ public class Server {
             logger.error(e.getMessage());
         }
     }
-
+/**
+ * 
+ * @param tank
+ * @param request
+ * @return
+ */
     private static String getMessage(Tank tank, Request request) {
-		return "El Tanque " + request.tank + " ha despachado " + request.liters + "L , su contenido actual es de: " + tank.capacity + "L \n ";
+		return "Se han despachado " + request.liters + "L correctamente";
 	}
 }
