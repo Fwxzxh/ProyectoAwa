@@ -72,6 +72,7 @@ public class Server {
                         flowOut.writeUTF(message);
 
                     } catch(Exception e) {
+                    	logger.info(e.getMessage());
                         flowOut.writeUTF(e.getMessage());
                     }
 											                
