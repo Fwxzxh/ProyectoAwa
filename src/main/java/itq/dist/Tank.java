@@ -23,7 +23,7 @@ public class Tank extends Thread {
         if (liters >= MIN_DISPATCH && liters <= MAX_DISPATCH) {
             this.capacity -= liters;
         } else {
-            throw new Exception("Couldn't dispatch\nMin capacity: " + MIN_DISPATCH + "\nMax capacity: " + MAX_DISPATCH);
+            throw new Exception("Los litros especificados estan fuera de la capacidad para despachar \nCapacidad minima: " + MIN_DISPATCH + "\nCapacidad máxima: " + MAX_DISPATCH);
         }
     }
 
