@@ -21,7 +21,13 @@ public class Tank extends Thread {
 
     public void dispatch(int liters) throws Exception {
         if (liters >= MIN_DISPATCH && liters <= MAX_DISPATCH) {
+        	if (liters > capacity && capacity == 0) {
+        		throw new Exception("El tanque se encuentra vacío, intente el día de mañana");
+        	} else if (liters > capacity) {
+        		throw new Exception("El tanque no dispone de esa cantidad, por favor indique una cantidad menor de agua");
+        	} else {
             this.capacity -= liters;
+            }
         } else {
             throw new Exception("Los litros especificados estan fuera de la capacidad para despachar \nCapacidad minima: " + MIN_DISPATCH + "\nCapacidad máxima: " + MAX_DISPATCH);
         }
