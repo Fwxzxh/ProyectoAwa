@@ -18,8 +18,8 @@ public class Tank extends Thread {
         this.capacity = capacity;
         this.fillTime = fillTime;
     }
-
-    public void dispatch(int liters) throws Exception {
+  
+    public synchronized void dispatch(int liters) throws Exception {
         if (liters >= MIN_DISPATCH && liters <= MAX_DISPATCH) {
         	if (liters > capacity && capacity == 0) {
         		throw new Exception("El tanque se encuentra vacío, intente el día de mañana");

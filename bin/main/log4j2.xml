@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
  <Appenders>
- <File name="A1" fileName="/home/sueltamemelastimas/Documentos/Sistemas_Distribuidos/ProyectoAwa/Bitacora.log" append="true">
+ <File name="A1" fileName="/home/jdemc/Programing/9no/Prog_Distrib/ProyectoAwa/Bitacora.log" append="true">
  <!-- ojo con las rutas amikos -->
  <!-- For unix: fileName="/home/tuUsario/rutaAlProyecto/Bitacora.log" -->
  <!-- Ejemplo fileName="/home/jdemc/Programing/9no/Prog_Distrib/ProyectoAwa/Bitacora.log" -->
